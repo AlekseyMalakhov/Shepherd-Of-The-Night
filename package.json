@@ -1,0 +1,12 @@
+{
+  "name": "sod_server",
+  "version": "1.0.0",
+  "description": "Shepard of the night server",
+  "dependencies": {
+    "express": "^4.17.0",
+    "socket.io": "^2.2.0"
+  },
+  "scripts": {
+    "start": "node sod_server.js"
+  }
+}

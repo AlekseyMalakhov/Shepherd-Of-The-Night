@@ -1,0 +1,1199 @@
+body {
+	overflow: hidden;
+	margin: 0px;
+	font-family: Helvetica, sans-serif; 
+	user-select: none;
+}
+
+#map {
+	position: absolute;
+	width: 5785px;
+	height: 4335px;
+	background-repeat: repeat;
+	background-image: url("images/ground.jpg");
+	z-index: 1;
+	user-select: none;
+}
+
+#game_space {
+	position: absolute;
+}
+
+/* control panel */
+
+#controlpanel {
+	position: fixed;
+	height: 200px;
+	left: 1%;
+	right: 1%;
+	bottom: 0;
+	background: brown;
+	background-image: url("images/control_panel.jpg");
+	max-width: 960px;
+	min-width: 960px;
+	margin: 0 auto;
+	z-index: 6;
+}
+
+#unit_info {
+	position: absolute;
+	top: 10px; 
+	left: 250px;
+	width: 600px;
+	height: 200px;
+	background: black;
+}
+	
+
+#selected_img_panel {
+	position: absolute;
+	top: 8px; 
+	left: 40px;
+}
+
+#imageOnPanel {
+	width: 140px;
+	height: 140px;
+}
+
+#selected_img_inf {
+	position: absolute;
+	left: 190px;
+	background: black;
+	width: 365px;
+}
+
+#selected_img_inf p{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	color: white;
+}
+
+#exp_bar {
+	position: absolute;
+	top: 8px; 
+	left: 185px;
+}
+
+#expBarFrame {
+	width: 375px;
+	height: 30px;
+	border: 1px solid;
+}
+
+#expBarText {
+	position: absolute;
+	width: 375px;
+	top: 0px; 
+	left: 0px;
+	color: white;
+	margin-top: 6px;
+	margin-bottom: 5px;
+	text-align: center;
+}
+	
+	
+
+
+
+#health_bar {
+	position: absolute;
+	top: 8px; 
+	left: 5px;
+}
+
+#mana_bar {
+	position: absolute;
+	top: 8px; 
+	left: 565px;
+}
+
+#manaLifePanel {
+	position: absolute;
+	top: 150px; 
+	left: 40px;
+	width: 140px;
+}
+
+	
+#manaLifePanel p{
+	margin-top: 1px;
+	margin-bottom: 1px;
+	color: white;
+	text-align: center;
+}
+
+.healthManaBars {
+	position: absolute;
+}
+
+#name {
+	font-size: 22px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+	
+	
+
+
+
+
+/* Scroll map */
+
+#scroll_areas {
+	font-size: 0;
+	position: fixed;
+	z-index: 7;
+}
+
+
+#top, #bottom, #left, #right, #top_left_div, #top_right_div, #bottom_left_div, #bottom_right_div {
+	background: transparent;
+	position: fixed;
+		
+	}
+	#left, #right {
+		top: 30px; 
+		bottom: 30px;
+		width: 15px;
+		}
+		
+		#left { 
+		left: 0; 
+		}
+		
+		#right { 
+		right: 0; 
+		}
+		
+	#top, #bottom {
+		left: 30px; 
+		right: 30px;
+		height: 15px;
+		}
+		
+		#top { 
+		top: 0; 
+		}
+		
+		#bottom { 
+		bottom: 0; 
+		}
+		
+	#top_left_div { 
+		top: 0px; 
+		left: 0px;
+		}
+		
+	#top_right_div { 
+		top: 0px; 
+		right: 0px;
+		}
+		
+	#bottom_left_div { 
+		bottom: 0px; 
+		left: 0px;
+		}
+	
+	#bottom_right_div { 
+		bottom: 0px; 
+		right: 0px;
+		}
+
+		
+/* Characters moving and selection */
+
+.hero, .mob {
+	border: 1px solid #bfbfbf;
+	position: absolute;
+    background-repeat: no-repeat;
+	background-color: black;
+	background-position: center;
+	user-select: none;
+	
+}
+
+
+.friend:hover {
+	box-shadow: 0px 0px 32px 0px rgba(34,214,55,1);
+}
+
+.friend.waiting_selection {
+	box-shadow: 0px 0px 32px 0px rgba(34,214,55,1);
+}
+
+.friend.selected {
+	box-shadow: 0px 0px 25px -2px rgba(34,214,55,1);
+}
+
+.friend.selected:hover {
+	box-shadow: 0px 0px 32px 0px rgba(34,214,55,1);
+}
+
+.levelUp_1 {
+	box-shadow: 0px 0px 120px 13px rgba(255,234,0,1);
+	transition: box-shadow 0.3s ease-in;
+}
+
+.levelUp_2 {
+	box-shadow: 0px 0px 0px 0px rgba(255,234,0,1);
+	transition: box-shadow 0.3s ease-in;
+}
+
+.enemy:hover {
+	box-shadow: 0px 0px 32px 0px rgba(255,0,0,1);
+}
+
+.enemy.waiting_selection{
+	box-shadow: 0px 0px 32px 0px rgba(255,0,0,1);
+}
+
+.enemy.selected {
+	box-shadow: 0px 0px 25px -2px rgba(255,0,0,1);
+}
+
+.enemy.selected:hover {
+	box-shadow: 0px 0px 32px 0px rgba(255,0,0,1);
+}
+
+.player_name {
+	display: none;
+	position: absolute;
+	top: -60px;
+	left: -40px;
+	width: 150px;
+	text-align: center;
+}
+
+.hero:hover .player_name {
+	display: block;
+}
+
+
+.friend.my_unit {
+	border: 2px solid #bfbfbf;
+	box-shadow: 0px 0px 10px 5px rgb(64, 91, 211);
+}
+
+.friend.my_unit:hover {
+	box-shadow: 0px 0px 10px 8px rgb(64, 91, 211);
+}
+
+.friend.my_unit.waiting_selection {
+	box-shadow: 0px 0px 10px 8px rgb(64, 91, 211);
+}
+
+.friend.my_unit.selected {
+	box-shadow: 0px 0px 10px 5px rgb(64, 91, 211);
+}
+
+.friend.my_unit.selected:hover {
+	box-shadow: 0px 0px 10px 8px rgb(64, 91, 211);
+}
+
+
+
+
+
+/* weapons and spells */
+
+.sword {
+	position: absolute;
+	top: 0px; 
+	left: -25px;
+	width: 20px;
+	height: 20px;
+	background-repeat: no-repeat;
+	background-color: black;
+	background-size: 20px 20px;
+	background-position: center;
+}
+
+.healSign {
+	position: absolute;
+	top: -25px; 
+	left: 25px;
+	width: 20px;
+	height: 20px;
+	background-image: url("images/heal.jpg");
+	background-repeat: no-repeat;
+	background-color: black;
+	background-size: 20px 20px;
+	background-position: center;
+}
+
+.powerBlowSign {
+	position: absolute;
+	top: -5px; 
+	left: -35px;
+	width: 30px;
+	height: 30px;
+	background-image: url("images/alucard_ability.jpg");
+	background-repeat: no-repeat;
+	background-color: black;
+	background-size: 30px 30px;
+	background-position: center;
+}
+
+.lifebar {
+	position: absolute;
+	top: -20px; 
+	left: -5px;
+}
+
+#coords {
+	margin: 1px;
+}
+
+#minimap {
+	position: absolute;
+	top: 25px; 
+	left: 13px;
+	border: 1px solid #bfbfbf;
+    background-repeat: no-repeat;
+	background-color: black;
+	background-image: url("images/minimap.jpg");
+	background-position: center;
+}
+
+/* ability buttons */
+
+.ability_button {
+	position: absolute;
+	border: 1px solid #bfbfbf;
+	width: 50px;
+	height: 50px;
+	background-repeat: no-repeat;
+	background-color: black;
+	background-size: 50px 50px;
+	background-position: center;
+}
+
+.ability_button .tooltiptext {
+	font-size: 0.8em;
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 50%;
+    left: 250%;
+    margin-left: -60px;
+
+    /* Fade in tooltip */
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+
+/* Tooltip arrow */
+.tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 40%;
+    left: -8%;
+    margin-left: 0px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #555 transparent transparent;
+}
+
+
+.ability_button:hover {
+	box-shadow: 0px 0px 32px 0px rgba(255,234,0,1);
+}
+
+
+.ability_button:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+#save_map_button {
+	top: 135px; 
+	left: 875px;
+	background-image: url("images/save_map_button.jpg");
+}
+
+#ability_button_1 {
+	top: 10px; 
+	left: 875px;
+}
+
+/* end of ability buttons */
+
+
+.ball {
+	position: absolute;
+    background-repeat: no-repeat;
+	background-color: transparent;
+	background-size: 20px 20px;
+	background-position: center;
+	z-index: 6;
+}
+
+.map_object {
+	position: absolute;
+    background-repeat: no-repeat;
+	background-color: transparent;
+	background-position: center;
+}
+
+#svg_background {
+	position: absolute;
+	z-index: 3;
+	user-select: none;
+}
+
+
+/*editor mode*/
+
+#map_editor {
+	position: absolute;
+	top: 10px; 
+	left: 190px;
+	width: 600px;
+	height: 200px;
+	background: grey;
+}
+
+#editor_heading {
+	font-size: 18px;
+	text-align: center;
+	margin-bottom: 7px;
+	margin-top: 7px;
+}
+
+#editor_tips {
+	font-size: 15px;
+	text-align: center;
+	margin-bottom: 9px;
+	margin-top: 5px;
+}
+
+#object_buttons {
+	position: absolute;
+	left: 120px;
+	
+}
+
+
+.editor_button {
+	position: absolute;
+	border: 1px solid #bfbfbf;
+	top: 10px; 
+	left: 815px;
+	width: 50px;
+	height: 50px;
+	background-image: url("images/save_map_button.jpg");
+    background-repeat: no-repeat;
+	background-color: black;
+	background-size: 50px 50px;
+	background-position: center;
+	transform: scale(1);
+}
+
+.editor_button:hover {
+	box-shadow: 0px 0px 3px 0px rgba(255,234,0,1);
+}
+
+.editor_button.selected {
+	border: 1px solid black;
+	box-shadow: 0px 0px 8px 0px rgba(255,234,0,1);
+	transform: scale(0.99);
+	transition: transform 0.03s ease-in;
+}
+
+#sprucebutton {
+	top: 0px; 
+	left: 10px;
+	background-image: url("images/spruce_button.jpg");
+}
+
+#housebutton {
+	top: 0px; 
+	left: 65px;
+	background-image: url("images/house_button.jpg");
+}
+
+#alucardbutton {
+	top: 0px; 
+	left: 120px;
+	background-image: url("images/alucard.jpg");
+}
+
+#moranebutton {
+	top: 0px; 
+	left: 175px;
+	background-image: url("images/morane.jpg");
+}
+
+#baltazarbutton {
+	top: 0px; 
+	left: 230px;
+	background-image: url("images/baltazar.jpg");
+}
+
+#uterbutton {
+	top: 0px; 
+	left: 285px;
+	background-image: url("images/uter.jpg");
+}
+
+#centaurbutton {
+	top: 53px; 
+	left: 10px;
+	background-image: url("images/centaur.jpg");
+}
+
+#dark_magebutton {
+	top: 53px; 
+	left: 65px;
+	background-image: url("images/dark_mage.jpg");
+}
+
+#lichbutton {
+	top: 53px; 
+	left: 120px;
+	background-image: url("images/lich.jpg");
+}
+
+#phantom_assassinbutton {
+	top: 53px; 
+	left: 175px;
+	background-image: url("images/phantom_assassin.jpg");
+}
+
+#stone_giantbutton {
+	top: 53px; 
+	left: 230px;
+	background-image: url("images/stone_giant.jpg");
+}
+
+#warlordbutton {
+	top: 53px; 
+	left: 285px;
+	background-image: url("images/warlord.jpg");
+}
+
+#level_inp {
+	position: absolute;
+	top: 80px; 
+	left: 480px;
+	width: 100px;
+	height: 100px;
+	border: 1px solid black;
+}
+
+#level_inp_field {
+	position: absolute;
+	top: 50px; 
+	left: 18px;
+	width: 60px;
+}
+
+#level_inp_text_div {
+	position: absolute;
+	left: 1%;
+	right: 1%;
+	height: auto;
+	width: 80px;
+	margin: 0px auto;
+}
+
+#level_inp_text {
+	font-size: 15px;
+	text-align: center;
+	margin-top: 6px;
+	
+}
+
+/*start screen*/
+
+#start_background {
+	position: absolute;
+	height: 100vh;
+    width: auto;
+	left: 0px;
+	right: 0px;
+	background-image: url("images/start_screen.png");
+    background-repeat: no-repeat;
+	background-color: black;
+	background-position: center;
+	margin: 0 auto;
+}
+
+#start_music {
+	position: fixed;
+	left: 20px;
+	bottom: 40px;
+}
+
+#game_name {
+	position: absolute;
+	top: 50px;
+    width: 1000px;
+	height: auto;
+	left: 0px;
+	right: 0px;
+	margin: 0 auto;
+}
+
+
+/* ask music */
+
+#ask_music {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	height: 400px;
+    width: 600px;
+	left: 0px;
+	right: 0px;
+    background-repeat: no-repeat;
+	background-color: #211e1e;
+	background-position: center;
+	margin: auto auto;
+}
+
+#music_query_text {
+	position: absolute;
+	color: white;
+	font-size: 30px;
+	top: 20px;
+	left: 0px;
+	right: 0px;
+	text-align: center;
+}
+
+#music_query_note {
+	position: absolute;
+	color: white;
+	font-size: 15px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	text-align: center;
+}
+
+.sound_button {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	transform: scale(1);
+	transition: transform 0.1s ease-in;
+}
+	
+.sound_button:hover {
+	transform: scale(1.2);
+	transition: transform 0.1s ease-in;
+}
+
+#sound_on {
+	top: 160px; 
+	left: 130px;
+}
+
+#sound_off {
+	top: 160px; 
+	right: 130px;
+}
+
+
+
+/* multiplayer*/
+
+#ask_name {
+	display: none;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	height: 140px;
+    width: 500px;
+	left: 0px;
+	right: 0px;
+    background-repeat: no-repeat;
+    background-color: #3f3a3a;
+	background-position: center;
+	margin: auto auto;
+}
+
+
+#ask_name p {
+	position: absolute;
+	color: white;
+	font-size: 30px;
+	top: 20px;
+	left: 0px;
+	right: 0px;
+	text-align: center;
+}
+
+#ask_name input {
+    position: absolute;
+    top: 70px;
+    left: 50px;
+    height: 30px;
+    font-size: 1rem;
+    width: 300px;
+    border-style: solid;
+    border-width: 0px 0px 0px 0px;
+    border-color: #211e1e;
+    padding: 0 10px;
+}
+
+
+#ask_name button {
+   position: absolute;
+   top: 70px;
+    height: 30px;
+    font-size: 1rem;
+    left: 350px;
+    width: 120px;
+	background: rgb(67, 172, 70);
+    border-width: 0px 0px 0px 0px;
+    color: #fff;
+}
+
+#ask_name button:hover {
+    background: #3e8e41;
+    border: 1px solid #3e8e41;
+
+}
+
+#ask_name p, input, button  {
+	margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+#name_error {
+    display: none;
+    position: absolute;
+    top: 90px;
+    left: 0px;
+    right: 0px;
+    margin: auto auto;
+}
+
+#name_error p {
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+}
+
+
+
+
+#multiplayer_list {
+	display: none;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	height: 600px;
+    width: 850px;
+	left: 0px;
+	right: 0px;
+    background-repeat: no-repeat;
+	background-color: #211e1e;
+	background-position: center;
+	margin: auto auto;
+}
+
+#multiplayer_list h1, h3, p {
+	color: white;
+}
+
+#multiplayer_list h1, h3 {
+	position: absolute;
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+#multiplayer_list h1 {
+	left: 200px;
+}
+
+#multiplayer_list .button {
+	position: absolute;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+#multiplayer_list .ready {
+	display: none;
+	top: 520px;
+	right: 20px;
+	background-color: #4CAF50; /* Green */
+}
+  
+#multiplayer_list .ready:hover {
+	background-color: #3e8e41;
+}
+
+#multiplayer_list .cancel {
+	top: 520px;
+	right: 160px;
+	background-color: #f44336; /* Red */
+}
+  
+#multiplayer_list .cancel:hover {
+	background-color: #d43a2f;
+}
+
+#multiplayer_list .selected_note {
+	display: none;
+	position: absolute;
+	color: #50ff98;
+	font-weight: bold;
+	top: 100px;
+	left: 70px;
+}
+
+#heroes_list {
+	position: absolute;
+	top: 80px;
+	left: 20px;
+	background-color: #211e1e;
+}
+
+.hero_block img {
+	position: relative;
+	height: 140px;
+    width: 140px;
+}
+
+
+.hero_block{
+	position: relative;
+	height: 140px;
+	width: 500px;
+	margin: 15px 0px;
+	padding: 5px 15px 5px 5px;
+	border: 1px solid #211e1e;
+}
+
+
+.hero_description {
+	position: absolute;
+	top: 0px;
+	left: 100px;
+}
+
+.hero_description h3 {
+	position: static;
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+.hero_description p {
+	margin-left: 70px;
+}
+
+.hero_block.hover:hover {
+	background: #5c5a5b;
+	border: 1px solid #ffffff;
+
+}
+
+.hero_block.selected, .hero_block.selected:hover {
+	background: #4d4b4c;
+	border: 2px solid #ffffff;
+}
+
+.hero_block.my_choice {
+	background: #4d4b4c;
+	border: 2px solid #50ff98;
+}
+
+.hero_block.other_user_choice {
+	background: #4d4b4c;
+	border: 2px solid #ffffff;
+	filter: grayscale(100%);
+}
+
+
+
+/*Chat chose your hero*/
+
+#chat_1 {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	height: 470px;
+    width: 250px;
+	background-color: #5c5a5b;
+
+}
+
+#chat_1 h3 {
+	position: static;
+	color: #fff;
+	background-color: #211e1e;
+	margin: 0px 0px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#enter_message {
+	position: absolute;
+	bottom: 0px;
+    background: #000;
+	padding-top: 3px;
+	padding-bottom: 3px;
+    bottom: 0;
+	width: 100%;
+}
+
+#enter_message input { 
+    border: 0; 
+    padding: 10px; 
+    width: 71%; 
+    margin-right: .5%; 
+}
+
+#enter_message button { 
+    width: 25%; 
+	background: #008CBA;
+	border: none;
+	padding: 10px;
+	color: white;
+}
+
+#enter_message button:hover { 
+	background: rgb(64, 102, 138); 
+}
+
+#messages { 
+	height: 275px;
+    list-style-type: none;
+	margin: 0; padding: 0; 
+	overflow: auto;
+}
+
+#messages li {
+	color: #fff;
+	padding: 5px 10px; 
+	font-size: 13px;
+}
+
+#messages li:nth-child(odd) {
+     background: #4e4d4e; 
+}
+
+#players {
+	height: 60px;
+	background: #211e1e;
+	margin: 0px 0px;
+}
+
+#players li {
+	color: #fff;
+	padding: 1px 0px;
+}
+
+
+
+
+
+
+
+/* start screen buttons */
+
+
+#start_buttons {
+	position: absolute;
+	top: 160px; 
+	right: 350px;
+}
+
+.start_butt{
+	position: absolute;
+	width: 220px;
+	height: 59px;
+	transform: scale(1);
+	transition: transform 0.1s ease-in;
+}
+	
+.start_butt:hover {
+	transform: scale(1.1);
+	transition: transform 0.1s ease-in;
+}
+
+#single_game_button {
+	top: 0px; 
+	left: 0px;
+}
+
+#multiplayer_button {
+	top: 70px; 
+	left: 0px;
+}
+
+#map_editor_button {
+	top: 140px; 
+	left: 0px;
+}
+
+#options_button {
+	top: 210px; 
+	left: 0px;
+}
+
+#restart_server {
+	position: relative;
+	top: 100px; 
+	right: 170px;
+}
+
+#restart_server button {
+	position: absolute;
+	border: none;
+	color: white;
+	padding: 10px 28px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	cursor: pointer;
+	background-color: #f44336;
+	width: 150px;
+	height: 52px;
+}
+
+#restart_server button:hover {
+	background-color: #d43a2f;
+}
+
+
+/* presentation screen */
+
+#presentation {
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	height: 100vh;
+    width: auto;
+	background-color: black;
+	margin: 0 auto;
+}
+
+#present_logo {
+	position: absolute;
+	width: 1100px;
+	height: 440px;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto auto;
+}
+
+
+#termenvox {
+	position: absolute;
+	top: 0px;
+	width: 1000px;
+	height: auto;
+	left: 0px;
+	right: 0px;
+	margin: 0 auto;
+}
+
+#interactive_studio {
+	position: absolute;
+	top: 180px;
+	width: 500px;
+	height: auto;	
+	left: 400px;
+}
+
+#presents {
+	position: absolute;
+	bottom: 0px;
+	width: 300px;
+	height: auto;	
+	left: 0px;
+	right: 0px;
+	margin: 0 auto;
+}
+
+#black_cover {
+	position: absolute;
+	width: 5800px;
+	height: 4400px;
+	background-color: black;
+	z-index: 10;
+}
+
+/* victory screen */
+
+#victory {
+	position: absolute;
+	height: 100vh;
+    width: auto;
+	left: 0px;
+	right: 0px;
+	background-image: url("images/victory.jpg");
+    background-repeat: no-repeat;
+	background-color: black;
+	background-position: center;
+	margin: 0 auto;
+	z-index: 11;
+}
+
+#victory_logo {
+	position: absolute;
+	top: 50px;
+	width: 500px;
+	height: auto;
+	left: 500px;
+	right: 0px;
+	margin: 0 auto;
+}
+
+#victory_text {
+	position: absolute;
+	font-family: Helvetica, sans-serif;
+	font-size: 30px;
+	font-weight: bold;
+	text-shadow: 0px 0px 5px #ffffff;
+	top: 300px;
+	left: 500px;
+	right: 0px;
+	text-align: center;
+}
+
+
+/* multyplayer test button */
+
+#fast_mult_test {
+	position: absolute;
+	width: 200px;
+	height: 50px;
+	font-size: 20px;
+	display: none;
+}
+
+
+	
+	
+
+
+	
+	
+

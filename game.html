@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Game</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="game/game.css">
+</head>
+<body>
+
+<div id = "start_background">
+	<img id="game_name" src = "game/images/game_name.png">
+	<div id = "start_buttons">
+		<img id="single_game_button" class = "start_butt" src = "game/images/single_game_button.png">
+		<img id="multiplayer_button" class = "start_butt" src = "game/images/multiplayer_button.png">
+		<img id="map_editor_button" class = "start_butt" src = "game/images/map_editor_button.png">
+		<img id="options_button" class = "start_butt" src = "game/images/options_button.png">
+	</div>
+	<audio autoplay loop controls id = "start_music">
+		<source src="game/sounds/start_music.mp3" type="audio/mpeg">
+	</audio>
+	<button id = "fast_mult_test">Multyplayer test</button>
+</div>
+
+<div id = "ask_music">
+		<p id="music_query_text"> Would you like to turn on sound?</p>
+		<p id="music_query_note"> Note: It's just a browsers policy which requires to ask you about it:) <br> Later you can always turn off/on sound by pressing S key.</p>
+		<img id="sound_on" class = "sound_button" src = "game/images/sound_on.png">
+		<img id="sound_off" class = "sound_button" src = "game/images/sound_off.png">
+</div>
+
+<div id = "ask_name">
+	<div id = "name_error">
+	  <p><strong>Please, enter your nickname!</strong></p>
+	</div>
+	<p> Enter your nickname</p>
+	<input autocomplete="off" autofocus placeholder="Nickname">
+	<button class = "enter_name">Enter</button>
+	<div id = "restart_server">
+		<button class="button_rest">Restart the server</button>
+	</div>
+</div>
+
+<div id = "multiplayer_list">
+	<h1> Choose your hero </h1>
+	<div id = "heroes_list">
+		<div class = "hero_block hover" game_class_id = "alucard">
+			<img id = "aluc_m" src = "game/images/alucard.jpg">
+			<div class="hero_description">
+				<h3>Alucard</h3>
+				<p>Mellee unit. He lives in the forest and can learn the power blow</p>
+				<div class="selected_note"> Selected: username</div>
+			</div>
+		</div>
+
+		<div class = "hero_block hover" game_class_id = "uter">
+			<img id = "uter_m" src = "game/images/uter.jpg">
+			<div class="hero_description">
+				<h3>Uter</h3>
+				<p>Mellee unit. He lives in the forest and can make area damage</p>
+				<div class="selected_note"> Selected: username</div>
+			</div>
+			
+		</div>
+
+		<div class = "hero_block hover" game_class_id = "morane">
+			<img id = "morane_m" src = "game/images/morane.jpg">
+			<div class="hero_description">
+				<h3>Morane</h3>
+				<p>Ranged unit. She is a great magician and can heal friendly units</p>
+				<div class="selected_note"> Selected: username</div>
+			</div>
+		</div>
+	</div>
+	<div id="chat_1">
+		<h3>Players list</h3>
+		<ul id="players"></ul>
+		<h3>Chat</h3>
+		<ul id="messages"></ul>
+		<form id = "enter_message" action="">
+			<input id="m" autocomplete="off" placeholder="Type your message">
+			<button>Send</button>
+		</form>
+	</div>
+	<button class="button ready">Ready</button>
+	<button class="button cancel">Cancel</button>
+
+</div>
+
+<div id = "presentation">
+	<div id = "present_logo">
+		<img id="termenvox" src = "game/images/termenvox.png">
+		<img id="interactive_studio" src = "game/images/interactive_studio.png">
+		<img id="presents" src = "game/images/presents.png">
+	</div>
+</div>
+
+<div id = "game">
+	<div id = "scroll_areas">
+		<div id="left"></div>
+		<div id="right"></div>
+		<div id="top"></div>
+		<div id="bottom"></div>
+		<div id="top_left_div">
+			<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+				<polygon id="top_left" opacity="0" points="0,0 0,30 15,30 15,15 30,15 30,0" />
+			</svg>
+		</div>
+		<div id="top_right_div">
+			<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+				<polygon id="top_right" transform = "rotate(90 15, 15)" opacity="0" points="0,0 0,30 15,30 15,15 30,15 30,0" />
+			</svg>
+		</div>
+		<div id="bottom_left_div">
+			<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+				<polygon id="bottom_left" transform = "rotate(270 15, 15)" opacity="0" points="0,0 0,30 15,30 15,15 30,15 30,0" />
+			</svg>
+		</div>
+		<div id="bottom_right_div">
+			<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+				<polygon id="bottom_right" transform = "rotate(180 15, 15)" opacity="0" points="0,0 0,30 15,30 15,15 30,15 30,0" />
+			</svg>
+		</div>
+	</div>
+	
+	<div id = "game_space">
+		<div id="map"></div>
+		
+		<svg id="svg_background" width="5785" height="4335" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+			<polygon id="svg_selecting_frame" style="fill: transparent; stroke: #00ff00; stroke-width: 1" points="0,0 0,0 0,0 0,0" />
+			<circle cx="0" cy="0" r="0" stroke="transparent" stroke-width="8" fill="transparent" />
+		</svg>
+		
+		
+	</div>
+
+ 	<div id="controlpanel">
+		<p id="coords"></p>
+		<div id="minimap"></div>
+		<div id="unit_info">
+			<div id="selected_img_panel">
+				<img src="game/images/blackbox.jpg" id="imageOnPanel">
+			</div>
+			<div id="selected_img_inf">
+				<p id="name"></p>
+				<p id="level"></p>
+				<p id="class_type"></p>
+				<p id="game_class"></p>
+				<p id="attack_power"></p>
+			</div>
+			<div id="exp_bar">
+				<div id="expBarFrame">
+					<svg style="width: 0px;" height="30" id="expbar">
+						<rect width="100%" height="100%" x="0" y="0" style="fill: url(&quot;#expgrad&quot;);"></rect>
+						<linearGradient id="expgrad" x1="50%" y1="100%" x2="50%" y2="0%">
+							<stop offset="0%" style="stop-color: rgb(242, 0, 255); stop-opacity: 1;"></stop>
+							<stop offset="50%" style="stop-color: rgb(255, 99, 245); stop-opacity: 1;"></stop>
+							<stop offset="100%" style="stop-color: rgb(255, 0, 247); stop-opacity: 1;"></stop>
+						</linearGradient>
+					</svg>
+					<p id="expBarText"></p>
+				</div>
+			</div>
+			<div id="health_bar">
+				<svg width="30" height="185" id="healthbar" style="top: 200px;" class="healthManaBars">
+					<rect width="100%" height="100%" x="0" y="0" style="fill: url(&quot;#healthGrad&quot;);"></rect>
+					<linearGradient id="healthGrad" x1="0%" y1="50%" x2="100%" y2="50%">
+						<stop offset="0%" style="stop-color: rgb(180, 0, 0); stop-opacity: 1;"></stop>
+						<stop offset="50%" style="stop-color: rgb(255, 152, 150); stop-opacity: 1;"></stop>
+						<stop offset="100%" style="stop-color: rgb(180, 0, 0); stop-opacity: 1;"></stop>
+					</linearGradient>
+				</svg>
+			</div>
+			<div id="mana_bar">
+				<svg width="30" height="185" id="manabar" style="top: 200px;" class="healthManaBars">
+					<rect width="100%" height="100%" x="0" y="0" style="fill: url(&quot;#manaGrad&quot;);"></rect>
+					<linearGradient id="manaGrad" x1="0%" y1="50%" x2="100%" y2="50%">
+						<stop offset="0%" style="stop-color: rgb(0, 0, 255); stop-opacity: 1;"></stop>
+						<stop offset="50%" style="stop-color: rgb(125, 129, 255); stop-opacity: 1;"></stop>
+						<stop offset="100%" style="stop-color: rgb(0, 0, 255); stop-opacity: 1;"></stop>
+					</linearGradient>
+				</svg>
+			</div>
+			<div id="manaLifePanel">
+				<p id="life_points"></p>
+				<p id="mana_points"></p>
+			</div>
+		</div>
+		<div id="map_editor">
+			<p id="editor_heading"> Map Editor activated</p>
+			<p id="editor_tips"> Choose the object on the panel. Left click on the map - install. Rigth click on the object - delete. To go back to Game Mode - push E.</p>
+			<div id = "object_buttons">
+				<div id = "sprucebutton" class = "editor_button"></div>
+				<div id = "housebutton" class = "editor_button"></div>
+				<div id = "alucardbutton" class = "editor_button"></div>
+				<div id = "moranebutton" class = "editor_button"></div>
+				<div id = "baltazarbutton" class = "editor_button"></div>
+				<div id = "uterbutton" class = "editor_button"></div>
+				<div id = "centaurbutton" class = "editor_button"></div>
+				<div id = "dark_magebutton" class = "editor_button"></div>
+				<div id = "lichbutton" class = "editor_button"></div>
+				<div id = "phantom_assassinbutton" class = "editor_button"></div>
+				<div id = "stone_giantbutton" class = "editor_button"></div>
+				<div id = "warlordbutton" class = "editor_button"></div>
+	
+			</div>
+			<div id="level_inp">
+				<div id="level_inp_text_div">
+					<p id="level_inp_text"> Enter level of the unit:</p>
+				</div>
+				<input id="level_inp_field" type="number" value="1" min="1">
+			</div>
+		</div>
+		<div id = "save_map_button" class = "ability_button">
+			<span class="tooltiptext">Save map</span>
+		</div>
+		<div id = "ability_button_1" class = "ability_button">
+			<span class="tooltiptext">Heal friendly units</span>
+		</div>
+	</div>
+	<div id="black_cover"></div>
+</div>
+
+
+  <script src="game/code/jquery-3.3.1.js"></script>
+  <script src="game/code/snap.svg-min.js"></script>
+  <script src="game/game.js"></script> 
+  <script src="game/code/scroll_map.js"></script>
+  <script src="game/code/moving.js"></script>
+  <script src="game/code/database.js"></script>
+  <script src="game/code/selection.js"></script>
+  <script src="game/code/attack.js"></script>
+  <script src="game/code/display.js"></script>
+  <script src="game/code/map_objects.js"></script>
+  <script src="game/code/FileSaver.min.js"></script>
+  <script src="game/map.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+  <script src="game/code/multiplayer.js"></script>
+
+</body>
+</html>
